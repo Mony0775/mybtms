@@ -245,7 +245,7 @@
         </div>
 
         <div class="card-body pb-0">
-          <h5 class="card-title">Website Traffic</h5>
+          <h5 class="card-title">Track System</h5>
           <div hidden id="customer">{{$customer_count}}</div>
           <div hidden id="shipper">{{$shipper_count}}</div>
           <div hidden id="supplier">{{$supplier_count}}</div>
