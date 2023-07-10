@@ -1,0 +1,63 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="pagetitle">
+      <h1>Sale Report</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/employee/dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Sale report</li>
+        </ol>
+      </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+      <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+          <table class="table datatable table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Shipper Name</th>
+                    <th scope="col">Payment Type</th>
+                    <th scope="col">Payment Amount</th>
+                    <th scope="col">Transaction type</th>
+                    <th scope="col">Shipper Date</th>
+                    <th scope="col">Transaction Date</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Payment Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @foreach($transactions as $key => $transaction)
+                  <tr>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $transaction-> employeeName }}</td>
+                    <td>{{ $transaction-> CustomerName }}</td>
+                    <td>{{ $transaction-> ShipperName }}</td>
+                    <td>{{ $transaction-> payment_type }}</td>
+                    <td>{{ $transaction-> payment_amount }}</td>
+                    <td>
+                          @if ($transaction->type == 'Purchase')
+                            <span class="badge badge-danger text-danger">{{ $transaction-> type }}</span>
+                          @else <span class="badge badge-success text-success">{{ $transaction-> type }}</span>
+                          @endif
+                    </td>
+                    <td>{{ $transaction-> shipping_date }}</td>
+                    <td>{{ $transaction-> transaction_date }}</td>
+                    <td>{{ $transaction-> order_date }}</td>
+                    <td>{{ $transaction-> payment_date }}</td>
+                  </tr>
+                @endforeach
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+          </div>
+        </div><!-- End Left side columns -->
+      </div>
+    </section>
+
+@endsection
